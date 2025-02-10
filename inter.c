@@ -1,32 +1,30 @@
 #include <unistd.h>
 
-int main(int argc, char **argv)
+int main(int ac, char **av)
 {
-    int i, j;
-    int printed[256] = {0};
-
-    if (argc == 3)
+   if (ac == 3)
+   {
+    int i = 0;
+    int j = 0;
+    static int array[256];
+    while (av[1][i])
     {
-        i = 0;
-        while (argv[1][i])
+        if (array[(int) av[1][i]] == 0)
         {
-            if (!printed[(unsigned char)argv[1][i]])
+            while (av[2][j])
             {
-                j = 0;
-                while (argv[2][j])
+                if (av[1][i] == av[2][j])
                 {
-                    if (argv[1][i] == argv[2][j])
-                    {
-                        printed[(unsigned char)argv[1][i]] = 1;
-                        write(1, &argv[1][i], 1);
-                        break;
-                    }
-                    j++;
+                    array[(int) av[1][i]] = 1;
+                    write (1, &av[1][i], 1);
+                    break;
                 }
+                j++;
             }
-            i++;
         }
+        i++;
+        j = 0;
     }
-    write(1, "\n", 1);
-    return 0;
+    write (1, "\n", 1);
+   }
 }
