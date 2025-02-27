@@ -12,6 +12,7 @@ char *strpbrk(const char *s, const char *charset)
                 return(s[i]);
             j++;
         }
+        j = 0;
         i++;
     }
     return (NULL);

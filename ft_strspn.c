@@ -22,15 +22,3 @@ size_t	ft_strspn(const char *s, const char *accept)
     }
     return i;
 }
-
-#include <stdio.h>
-#include <string.h>
-
-int main() {
-    const char *s = "123abc";
-    const char *charset = "1234567890";
-
-    size_t length = strspn(s, charset);
-    printf("Length of initial segment: %zu\n", length);
-    return 0;
-}
